@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,6 +15,36 @@ export default function Index() {
     guests: '1',
     attending: ''
   });
+
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const weddingDate = new Date('2026-06-27T12:00:00');
+
+    const calculateTimeLeft = () => {
+      const now = new Date();
+      const difference = weddingDate.getTime() - now.getTime();
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60)
+        });
+      }
+    };
+
+    calculateTimeLeft();
+    const timer = setInterval(calculateTimeLeft, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,8 +74,51 @@ export default function Index() {
             <Separator className="w-16" />
           </div>
           <p className="text-3xl md:text-4xl font-semibold text-primary mt-8">
-            15 июля 2025
+            27 июня 2026
           </p>
+        </section>
+
+        <section className="mb-16 animate-scale-in">
+          <Card className="p-8 md:p-12 bg-primary/5 backdrop-blur-sm border-2 border-primary/20">
+            <div className="text-center mb-6">
+              <Icon name="Timer" className="mx-auto text-primary w-10 h-10 mb-4" />
+              <h2 className="text-3xl font-semibold mb-2">До торжества осталось</h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+              <div className="bg-background/50 rounded-lg p-6 text-center">
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                  {timeLeft.days}
+                </div>
+                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                  {timeLeft.days === 1 ? 'день' : timeLeft.days < 5 ? 'дня' : 'дней'}
+                </div>
+              </div>
+              <div className="bg-background/50 rounded-lg p-6 text-center">
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                  {timeLeft.hours}
+                </div>
+                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                  {timeLeft.hours === 1 ? 'час' : timeLeft.hours < 5 ? 'часа' : 'часов'}
+                </div>
+              </div>
+              <div className="bg-background/50 rounded-lg p-6 text-center">
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                  {timeLeft.minutes}
+                </div>
+                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                  {timeLeft.minutes === 1 ? 'минута' : timeLeft.minutes < 5 ? 'минуты' : 'минут'}
+                </div>
+              </div>
+              <div className="bg-background/50 rounded-lg p-6 text-center">
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                  {timeLeft.seconds}
+                </div>
+                <div className="text-sm md:text-base text-muted-foreground font-medium">
+                  {timeLeft.seconds === 1 ? 'секунда' : timeLeft.seconds < 5 ? 'секунды' : 'секунд'}
+                </div>
+              </div>
+            </div>
+          </Card>
         </section>
 
         <section className="mb-16 animate-scale-in">
@@ -56,8 +129,8 @@ export default function Index() {
                   <Icon name="Clock" className="text-primary w-6 h-6" />
                   <h3 className="text-2xl font-semibold">Время</h3>
                 </div>
-                <p className="text-lg text-muted-foreground mb-2">Церемония: 15:00</p>
-                <p className="text-lg text-muted-foreground">Банкет: 17:00</p>
+                <p className="text-lg text-muted-foreground mb-2">Церемония: 12:00</p>
+                <p className="text-lg text-muted-foreground">Банкет: 14:00</p>
               </div>
               
               <div className="text-center md:text-left">
@@ -77,7 +150,7 @@ export default function Index() {
             <div className="text-center mb-8">
               <h2 className="text-4xl font-semibold mb-4">Подтверждение присутствия</h2>
               <p className="text-muted-foreground">
-                Пожалуйста, подтвердите своё участие до 1 июля 2025
+                Пожалуйста, подтвердите своё участие до 1 июня 2026
               </p>
             </div>
             
