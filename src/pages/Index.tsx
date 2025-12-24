@@ -64,7 +64,7 @@ export default function Index() {
             <Icon name="Heart" className="mx-auto text-primary w-12 h-12 mb-6" />
           </div>
           <h1 className="text-6xl md:text-7xl font-light text-foreground mb-6 tracking-wide">
-            Анна & Дмитрий
+            Мария & Вадим
           </h1>
           <div className="flex items-center justify-center gap-4 mb-6">
             <Separator className="w-16" />
@@ -138,8 +138,8 @@ export default function Index() {
                   <Icon name="MapPin" className="text-primary w-6 h-6" />
                   <h3 className="text-2xl font-semibold">Место проведения</h3>
                 </div>
-                <p className="text-lg text-muted-foreground mb-2">Загородный клуб «Усадьба»</p>
-                <p className="text-muted-foreground">Московская область, Истринский район</p>
+                <p className="text-lg text-muted-foreground mb-2">Ресторан «Орёл и ёжик»</p>
+                <p className="text-muted-foreground">г. Псков, ул. Гоголя, д. 52</p>
               </div>
             </div>
           </Card>
@@ -233,24 +233,19 @@ export default function Index() {
         <section className="mb-16">
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="p-8 bg-accent/50 backdrop-blur-sm text-center">
-              <Icon name="Shirt" className="mx-auto text-primary w-10 h-10 mb-4" />
+              <Icon name="Smile" className="mx-auto text-primary w-10 h-10 mb-4" />
               <h3 className="text-2xl font-semibold mb-3">Дресс-код</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Элегантный вечерний наряд. Цветовая гамма: пастельные оттенки, белый, бежевый
+                Отличное настроение! Просьба исключить красный, розовый и иные яркие цвета
               </p>
             </Card>
 
             <Card className="p-8 bg-accent/50 backdrop-blur-sm text-center">
               <Icon name="Phone" className="mx-auto text-primary w-10 h-10 mb-4" />
               <h3 className="text-2xl font-semibold mb-3">Связь с нами</h3>
-              <p className="text-muted-foreground mb-2">
-                <a href="tel:+79001234567" className="hover:text-primary transition-colors">
-                  +7 (900) 123-45-67
-                </a>
-              </p>
-              <p className="text-muted-foreground">
-                <a href="mailto:wedding@example.com" className="hover:text-primary transition-colors">
-                  wedding@example.com
+              <p className="text-muted-foreground text-lg">
+                <a href="tel:+79118847945" className="hover:text-primary transition-colors">
+                  8-911-884-79-45
                 </a>
               </p>
             </Card>
